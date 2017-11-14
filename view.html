@@ -1,0 +1,108 @@
+<!Doctype HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    
+    <link rel='icon' href="img/notepad-icon.png"/>
+    <link rel="stylesheet" href="css/github-markdown.css">
+    <link rel="stylesheet" href="css/default.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    
+    <style>
+        #myspinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        skipStartupTypeset: true,
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" async
+      src="mathjax/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+        
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/showdown.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="js/init.js"></script>
+    
+    <link rel="stylesheet" href="css/soham-markdown-css.css">
+    <title>View Page</title>
+</head>
+
+<body>
+    <div id="myspinner">
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-yellow-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="content">
+    <article id="render-me" class="markdown-body"></article>
+    </div>
+    <footer>&copy;Copyright 2017 Soham Pardeshi</footer>
+    <script>
+        
+        function startTypeSetting() {
+          var HUB = MathJax.Hub;
+          HUB.Queue(["Typeset", HUB, "render-me"]);
+        }
+        
+        var urlParams;
+        // Thank you Stack Overflow's Andy E!
+        (window.onpopstate = function () {
+            var match,
+                pl     = /\+/g,  // Regex for replacing addition symbol with a space
+                search = /([^&=]+)=?([^&]*)/g,
+                decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                query  = window.location.search.substring(1);
+
+            urlParams = {};
+            while (match = search.exec(query))
+               urlParams[decode(match[1])] = decode(match[2]);
+        })();
+
+        var link = decodeURIComponent(atob(urlParams.content));
+        
+        var db = firebase.database();
+        var ref = db.ref("files/" + link);
+
+
+        ref.once('value').then(function(snap){     
+            console.log(snap.val())
+            var converter = new showdown.Converter();
+
+            var container = document.querySelector('article');
+            container.innerHTML = converter.makeHtml(snap.val());
+
+            document.getElementById('myspinner').remove();
+            startTypeSetting();
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+    
+
+</body>
+</html>

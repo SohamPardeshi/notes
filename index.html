@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Soham Pardeshi</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="A personal website containing my detailed notes for classes taken at the University of Washington." name="description">
+	<meta content="text/html; charset=utf-8" http-equiv="content-type">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"><!-- Compiled and minified CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="img/notepad-icon.png" rel='icon'>
+</head>
+
+<body>
+    
+    <!-- Search box -->
+	<nav>
+		<div class="nav-wrapper">
+			<form action="" method="get">
+				<div class="input-field">
+					<input id="search" name='search' placeholder="Search for notes..." type="search">
+				</div>
+			</form>
+		</div>
+	</nav>
+
+    <!-- Materialize spinner for loading Firebase -->
+	<div id="myspinner">
+		<div class="preloader-wrapper big active">
+			<div class="spinner-layer spinner-yellow-only">
+				<div class="circle-clipper left">
+					<div class="circle">
+					</div>
+				</div>
+
+				<div class="gap-patch">
+					<div class="circle">
+					</div>
+				</div>
+
+				<div class="circle-clipper right">
+					<div class="circle">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+    <!-- Container for dynamically added boxes -->
+	<div class="row" id="contain"></div>
+
+
+    <!-- Popup modal (Thanks W3Schools!) -->
+	<div class="modals" id="myModal">
+		<div class="modals-content">
+			<div class="modals-header yellow darken-2">
+				<span class="close">&times;</span>
+				<div>
+					About this
+				</div>
+			</div>
+
+			<div class="modals-body">
+				<p>Todo</p>
+			</div>
+		</div>
+	</div>
+
+    <!-- Fabulous FAB -->
+	<div class="fixed-action-btn toolbar">
+		<a class="btn-floating btn-large yellow darken-2"><i class="fa fa-question"></i></a>
+
+		<ul>
+			<li><a class="yellow darken-2" onclick="modal();" style="cursor:pointer;"><i class="fa fa-info fa-lg"></i></a>
+			</li>
+
+			<li><a href="https://www.facebook.com/soham.pa.14" rel="noopener noreferrer" style="background: #3B5998;" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+			</li>
+
+			<li><a href="https://github.com/SohamPardeshi" rel="noopener noreferrer" style="background: #e74c3c;" target="_blank"><i class="fa fa-github fa-lg"></i></a>
+			</li>
+
+			<li><a href="https://www.linkedin.com/in/sohampardeshi/" rel="noopener noreferrer" style="background: #0077B5;" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
+			</li>
+		</ul>
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script> 
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script> 
+    <script src="js/date.extensions.js"></script> 
+    <script src="js/init.js"></script> 
+    <script src="js/scripts.js"></script>
+
+
+
+</body>
+</html>

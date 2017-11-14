@@ -1,0 +1,48 @@
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.content {
+  min-height: 100%;
+}
+
+article {
+  padding-bottom: 50px;
+  margin-bottom: 35px;
+}
+
+p { 
+    margin-bottom: 26px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+
+footer {
+    margin-top: -50px;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    background:  #212121;
+    font-size: 12px;
+    padding-left: 20px;
+    font-family: 'Ubuntu';
+}
+
+#myspinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
