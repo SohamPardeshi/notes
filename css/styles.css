@@ -114,3 +114,8 @@ input {
     background-color: #5cb85c;
     color: white;
 }
+
+li {
+    list-style-type:circle;
+    padding-right: 15px;
+}
